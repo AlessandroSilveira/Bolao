@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  bolao:
+    image: ${DOCKER_REGISTRY}bolao
+    build:
+      context: .
+      dockerfile: Bolao/Dockerfile

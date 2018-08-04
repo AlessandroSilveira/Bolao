@@ -1,0 +1,19 @@
+services:
+  bolao:
+    build:
+      context: C:\Users\alesi\source\repos\Bolao
+      dockerfile: Bolao/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '44341'
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: bolao
+    ports:
+    - published: 60879
+      target: 80
+    - published: 44341
+      target: 443
+    volumes:
+    - C:\Users\alesi\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\alesi\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'

@@ -1,90 +1,74 @@
-﻿using Bolao.Models;
-using Bolao.Servicos.Interfaces;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Bolao.Models;
+using Bolao.Servicos.Interfaces;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
 
-namespace Bolao.Servicos
-{
-    public class PaginaRodada : IPaginaRodada
-    {
+namespace Bolao.Servicos {
+    public class PaginaRodada : IPaginaRodada {
         private readonly ISeleniumConfiguration _seleniumConfiguration;
 
         private IWebDriver _driver;
 
-        public PaginaRodada(ISeleniumConfiguration seleniumConfiguration)
-        {
+        public PaginaRodada (ISeleniumConfiguration seleniumConfiguration) {
             _seleniumConfiguration = seleniumConfiguration;
-            FirefoxOptions options = new FirefoxOptions();
-            options.AddArgument("--headless");
-             var timespan = TimeSpan.FromMinutes(3);
-            _driver = new FirefoxDriver(_seleniumConfiguration.CaminhoDriverFirefox, options,timespan);
+            FirefoxOptions options = new FirefoxOptions ();
+            options.AddArgument ("--headless");
+            var timespan = TimeSpan.FromMinutes (3);
+            _driver = new FirefoxDriver (_seleniumConfiguration.CaminhoDriverFirefox, options, timespan);
         }
 
-        public void CarregarPagina()
-        {
-            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(_seleniumConfiguration.Timeout);
-            _driver.Navigate().GoToUrl(_seleniumConfiguration.UrlPaginaRodadaBrasileirao);
+        public void CarregarPagina () {
+
         }
+        private string ObterUrlRodadaDaVez(string numeroRodada){
+            var ulr = _seleniumConfiguration.UrlPaginaRodadaBrasileirao.Replace("%s",numeroRodada);
+            return ulr;
+        }
+        public List<Rodada> ObterResultadosRodada () {
+            var rodadas = new List<Rodada> ();
+            for (int a = 1; a <= 38; a++) {
+                _driver.Manage ().Timeouts ().PageLoad = TimeSpan.FromSeconds (_seleniumConfiguration.Timeout);
+                _driver.Navigate ().GoToUrl (ObterUrlRodadaDaVez(a.ToString()));
 
-        public List<Rodada> ObterResultadosRodada()
-        {
-            var tableRodada = _driver.FindElement(By.ClassName("soccer"));
+                var tableRodada = _driver.FindElements (By.ClassName ("lista-de-jogos-item"));
 
-            var dadosRodada = tableRodada.FindElements(By.TagName("tbody"));
+                var rodada = new Rodada ();
+                rodada.Nome = "Rodada " + a.ToString ();
+                var jogos = new List<Jogo> ();
+                foreach (var itens in tableRodada) {
 
-            var totalRodadas = tableRodada.FindElement(By.TagName("tbody")).FindElements(By.ClassName("event_round")).Count();
-            
-            var rodadas = new List<Rodada>();
-            var jogos = new List<Jogo>();
-            var numeroJogosPorRodada = 10;
-            int i = 0;
-            int linhasPorRodada = 11;
-            int j=1;
+                    var jogo = new Jogo {
+                        EscudoTimeMandante=itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-mandante")).FindElement (By.ClassName ("placar-jogo-equipes-escudo-mandante")).GetAttribute ("src"),
+                        EscudoTimeVisitante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-visitante")).FindElement (By.ClassName ("placar-jogo-equipes-escudo-visitante")).GetAttribute ("src"),
+                        //DataJogo = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-mandante")).FindElement (By.ClassName ("placar-jogo-informacoes")).GetAttribute ("innerHTML"),
+                        TimeMandante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-mandante")).FindElement (By.ClassName ("placar-jogo-equipes-nome")).GetAttribute ("innerHTML"),
+                        PlacarTimeMandante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-placar")).FindElement (By.ClassName ("placar-jogo-equipes-placar-mandante")).GetAttribute ("innerHTML"),
+                        TimeVisitante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-visitante")).FindElement (By.ClassName ("placar-jogo-equipes-nome")).GetAttribute ("innerHTML"),
+                        PlacarTimeVisitante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-placar")).FindElement (By.ClassName ("placar-jogo-equipes-placar-visitante")).GetAttribute ("innerHTML")
+                    };
 
-            foreach(var itens in dadosRodada)
-            {
-                 var rodada = new Rodada();
+                    if (string.IsNullOrEmpty (jogo.PlacarTimeMandante))
+                        jogo.PlacarTimeMandante = "0";
 
-                var linhastituloRodada = _driver.FindElement(By.ClassName("soccer")).FindElement(By.TagName("tbody")).FindElements(By.ClassName("event_round"));
+                    if (string.IsNullOrEmpty (jogo.PlacarTimeVisitante))
+                        jogo.PlacarTimeVisitante = "0";
 
-                var linhas = _driver.FindElement(By.ClassName("soccer")).FindElement(By.TagName("tbody")).FindElements(By.TagName("tr"));
-
-                rodada.Nome = linhastituloRodada[i].FindElement(By.TagName("td")).GetAttribute("innerHTML");  
-
-                var placar = linhas[j].FindElement(By.ClassName("cell_sa")).GetAttribute("innerHTML").ToString().Trim().Split(':');
-
-
-                var jogo = new Jogo
-                {
-                    DataJogo = linhas[j].FindElement(By.ClassName("cell_ad")).GetAttribute("innerHTML"),             
-                    TimeMandante = linhas[j].FindElement(By.ClassName("cell_ab")).FindElement(By.ClassName("padr")).GetAttribute("innerHTML"),
-                    PlacarTimeMandante = placar[0].Trim(),
-                    TimeVisitante = linhas[j].FindElement(By.ClassName("cell_ac")).FindElement(By.ClassName("padl")).GetAttribute("innerHTML"),
-                    PlacarTimeVisitante = placar[1].Trim()
-                };
-                jogos.Add(jogo);
-                rodada.Jogos = jogos;
-                rodadas.Add(rodada);
-                i ++;
-                j++;
-
-                if(j ==linhasPorRodada){
-                    break;
+                    jogos.Add (jogo);
                 }
 
-
+                rodada.Jogos = jogos;
+                rodadas.Add (rodada);
             }
-           
+
             return rodadas;
         }
-     
-        public void Fechar()
-        {
-            _driver.Quit();
+
+        public void Fechar () {
+            _driver.Quit ();
             _driver = null;
         }
     }

@@ -46,7 +46,7 @@ namespace Bolao
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMotorBuscaClassificacao _motorBuscaClassificacao, IMotorBuscaRodada _motorBuscaRodada)
         {
-           // _motorBuscaClassificacao.MotorBuscaClassificacaoOnLine();
+            _motorBuscaClassificacao.MotorBuscaClassificacaoOnLine();
 
             _motorBuscaRodada.GravarResultadosDaRodada();
 

@@ -32,7 +32,7 @@ namespace Bolao.Servicos
 
             PaginaRodada paginaRodada = InstanciaPaginaRodada(_seleniumConfiguration);
 
-            paginaRodada.CarregarPagina();
+            //paginaRodada.CarregarPagina();
 
             var resultados = paginaRodada.ObterResultadosRodada();
 

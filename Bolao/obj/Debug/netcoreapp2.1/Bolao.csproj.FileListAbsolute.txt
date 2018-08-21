@@ -34,13 +34,6 @@ C:/Users/alesi/source/repos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.AssemblyIn
 C:/Users/alesi/source/repos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.AssemblyInfo.cs
 C:/Users/alesi/source/repos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.dll
 C:/Users/alesi/source/repos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.pdb
-/home/alessandro/Documentos/Bolao/Bolao/bin/Debug/netcoreapp2.1/Bolao.deps.json
-/home/alessandro/Documentos/Bolao/Bolao/bin/Debug/netcoreapp2.1/Bolao.runtimeconfig.json
-/home/alessandro/Documentos/Bolao/Bolao/bin/Debug/netcoreapp2.1/Bolao.runtimeconfig.dev.json
-/home/alessandro/Documentos/Bolao/Bolao/bin/Debug/netcoreapp2.1/Bolao.dll
-/home/alessandro/Documentos/Bolao/Bolao/bin/Debug/netcoreapp2.1/Bolao.pdb
-/home/alessandro/Documentos/Bolao/Bolao/bin/Debug/netcoreapp2.1/Bolao.Views.dll
-/home/alessandro/Documentos/Bolao/Bolao/bin/Debug/netcoreapp2.1/Bolao.Views.pdb
 /home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.csprojAssemblyReference.cache
 /home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.csproj.CoreCompileInputs.cache
 /home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.RazorAssemblyInfo.cache
@@ -48,13 +41,3 @@ C:/Users/alesi/source/repos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.pdb
 /home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/UserSecretsAssemblyInfo.cs
 /home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.AssemblyInfoInputs.cache
 /home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.AssemblyInfo.cs
-/home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.TagHelpers.input.cache
-/home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.TagHelpers.output.cache
-/home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.RazorCoreGenerate.cache
-/home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs
-/home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.RazorTargetAssemblyInfo.cache
-/home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.RazorTargetAssemblyInfo.cs
-/home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.Views.pdb
-/home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.dll
-/home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.pdb
-/home/alessandro/Documentos/Bolao/Bolao/obj/Debug/netcoreapp2.1/Bolao.csproj.CopyComplete

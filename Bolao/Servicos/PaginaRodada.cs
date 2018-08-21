@@ -43,9 +43,18 @@ namespace Bolao.Servicos {
 
                     var DataLocalHoraJogo = itens.FindElement (By.ClassName ("placar-jogo-informacoes")).Text.Split (" ");
 
-                    for (int i = 0; DataLocalHoraJogo.Length; i++) {
-                        terms[runs] = value;
-                    }   
+                   
+                    if(DataLocalHoraJogo.Length < 4){
+                        List<string> listDataLocalHoraJogo = DataLocalHoraJogo.Cast<string>().ToList();
+
+                        for (int i = DataLocalHoraJogo.Length; i <= 4; i++)
+                        {
+                           listDataLocalHoraJogo.Add("");
+                        }
+
+                        DataLocalHoraJogo = listDataLocalHoraJogo.ToArray();
+                    }
+
                     var jogo = new Jogo {
                         EscudoTimeMandante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-mandante")).FindElement (By.ClassName ("placar-jogo-equipes-escudo-mandante")).GetAttribute ("src"),
                         EscudoTimeVisitante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-visitante")).FindElement (By.ClassName ("placar-jogo-equipes-escudo-visitante")).GetAttribute ("src"),

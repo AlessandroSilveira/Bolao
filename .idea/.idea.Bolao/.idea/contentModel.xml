@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2018.1/system/resharper-host/local/Transient/ReSharperHost/v12/SolutionCaches/_Bolao.1539815203.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p=".dockerignore" t="Include" />
+      <e p="Bolao" t="IncludeRecursive">
+        <e p="Bolao.csproj" t="IncludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="ClassificacaoController.cs" t="Include" />
+          <e p="ValuesController.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="MongoContext.cs" t="Include" />
+        </e>
+        <e p="Dockerfile" t="Include" />
+        <e p="Models" t="Include">
+          <e p="Campeonato.cs" t="Include" />
+          <e p="Equipe.cs" t="Include" />
+          <e p="Jogo.cs" t="Include" />
+          <e p="Rodada.cs" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="Interfaces" t="Include">
+            <e p="IClassificacaoService.cs" t="Include" />
+          </e>
+          <e p="Services" t="Include">
+            <e p="ClassificacaoService.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Servicos" t="Include">
+          <e p="Interfaces" t="Include">
+            <e p="IMotorBuscaClassificacao.cs" t="Include" />
+            <e p="IMotorBuscaRodada.cs" t="Include" />
+            <e p="IPaginaClassificacao.cs" t="Include" />
+            <e p="IPaginaRodada.cs" t="Include" />
+            <e p="ISeleniumConfiguration.cs" t="Include" />
+          </e>
+          <e p="MotorBuscaClassificacao.cs" t="Include" />
+          <e p="MotorBuscaRodada.cs" t="Include" />
+          <e p="PaginaClassificacao.cs" t="Include" />
+          <e p="PaginaRodada.cs" t="Include" />
+          <e p="SeleniumConfigurations.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="Views" t="Include">
+          <e p="Shared" t="Include">
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="geckodriver" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.1" t="Include">
+              <e p="Bolao.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="wwwroot" t="Include" />
+      </e>
+      <e p="Bolao.sln" t="IncludeFlat" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="docker-compose.dcproj" t="IncludeRecursive" />
+      <e p="docker-compose.override.yml" t="Include" />
+      <e p="docker-compose.yml" t="Include" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

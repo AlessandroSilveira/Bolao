@@ -24,15 +24,15 @@ namespace Bolao.Servicos {
         public void CarregarPagina () {
 
         }
-        private string ObterUrlRodadaDaVez(string numeroRodada){
-            var ulr = _seleniumConfiguration.UrlPaginaRodadaBrasileirao.Replace("%s",numeroRodada);
+        private string ObterUrlRodadaDaVez (string numeroRodada) {
+            var ulr = _seleniumConfiguration.UrlPaginaRodadaBrasileirao.Replace ("%s", numeroRodada);
             return ulr;
         }
         public List<Rodada> ObterResultadosRodada () {
             var rodadas = new List<Rodada> ();
             for (int a = 1; a <= 38; a++) {
                 _driver.Manage ().Timeouts ().PageLoad = TimeSpan.FromSeconds (_seleniumConfiguration.Timeout);
-                _driver.Navigate ().GoToUrl (ObterUrlRodadaDaVez(a.ToString()));
+                _driver.Navigate ().GoToUrl (ObterUrlRodadaDaVez (a.ToString ()));
 
                 var tableRodada = _driver.FindElements (By.ClassName ("lista-de-jogos-item"));
 
@@ -41,14 +41,21 @@ namespace Bolao.Servicos {
                 var jogos = new List<Jogo> ();
                 foreach (var itens in tableRodada) {
 
+                    var DataLocalHoraJogo = itens.FindElement (By.ClassName ("placar-jogo-informacoes")).Text.Split (" ");
+
+                    for (int i = 0; DataLocalHoraJogo.Length; i++) {
+                        terms[runs] = value;
+                    }   
                     var jogo = new Jogo {
-                        EscudoTimeMandante=itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-mandante")).FindElement (By.ClassName ("placar-jogo-equipes-escudo-mandante")).GetAttribute ("src"),
+                        EscudoTimeMandante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-mandante")).FindElement (By.ClassName ("placar-jogo-equipes-escudo-mandante")).GetAttribute ("src"),
                         EscudoTimeVisitante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-visitante")).FindElement (By.ClassName ("placar-jogo-equipes-escudo-visitante")).GetAttribute ("src"),
-                        //DataJogo = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-mandante")).FindElement (By.ClassName ("placar-jogo-informacoes")).GetAttribute ("innerHTML"),
+                        DataJogo = DataLocalHoraJogo[1] == null? "": DataLocalHoraJogo[1],
+                        HoraJogo = DataLocalHoraJogo[3] == null? "": DataLocalHoraJogo[3],
                         TimeMandante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-mandante")).FindElement (By.ClassName ("placar-jogo-equipes-nome")).GetAttribute ("innerHTML"),
                         PlacarTimeMandante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-placar")).FindElement (By.ClassName ("placar-jogo-equipes-placar-mandante")).GetAttribute ("innerHTML"),
                         TimeVisitante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-visitante")).FindElement (By.ClassName ("placar-jogo-equipes-nome")).GetAttribute ("innerHTML"),
-                        PlacarTimeVisitante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-placar")).FindElement (By.ClassName ("placar-jogo-equipes-placar-visitante")).GetAttribute ("innerHTML")
+                        PlacarTimeVisitante = itens.FindElement (By.ClassName ("placar-jogo-equipes")).FindElement (By.ClassName ("placar-jogo-equipes-placar")).FindElement (By.ClassName ("placar-jogo-equipes-placar-visitante")).GetAttribute ("innerHTML"),
+                        LocalJogo = DataLocalHoraJogo[2] == null? "": DataLocalHoraJogo[2],
                     };
 
                     if (string.IsNullOrEmpty (jogo.PlacarTimeMandante))

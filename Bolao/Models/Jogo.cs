@@ -10,5 +10,7 @@ namespace Bolao.Models
         public string TimeVisitante { get; set; }
         public string EscudoTimeVisitante { get; set; }
         public string PlacarTimeVisitante { get; set; }
+        public string LocalJogo { get;  set; }
+        public string HoraJogo { get;  set; }
     }
 }
